@@ -1,0 +1,128 @@
+je créer un site vitrine pour un photographe,
+ j'ai déjà fait la partie design,
+  il me reste la partie technique,
+   pour la partie portfolio,
+    j'ai une fonction en 
+    .js portfolio avec lightbox,
+     la photographe souhaite avoir
+      un affichage particulier des photos,
+       bien que j'ai le style actuel 
+       "pinterest", la méthode est trop brut,
+        et casse le tri des photos,
+         je n'ai pas encore la reponse 
+         du photographe pour son idée du
+          portfolio mais j'ai imaginé que 
+          le tri, ce ferait pas ligne, de 
+          3 photos, sauterait une ligne et 
+          encore 3 photos, le probleme c'est 
+          que les photos ne sont pas toutes 
+          au meme formats, certaines paysage,
+           d'autres portrait, et il faudrait 
+           que le portfolio en lui meme 
+           sadapte a la taille de l'ecran
+            de l'utilisateur, ces codes 
+            sont les references des fichiers 
+            correspondant : ===============================================
+1. PORTFOLIO.HTML
+===============================================
+
+<body>
+  <!-- Header -->
+  <div id="header"></div>
+
+  <!-- Portfolio -->
+  <main x-data="portfolioGallery()">
+    <section class="portfolio">
+      <template x-for="(photo, index) in photos" :key="index">
+        <div class="portfolio-item" @click="open(index)">
+          <img :src="photo" alt="Portfolio photo">
+        </div>
+      </template>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" x-show="lightboxOpen" @click.self="close()">
+      <img :src="photos[currentIndex]" alt="Photo agrandie">
+      <button class="close-btn" @click="close()">×</button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+
+
+===============================================
+2. STYLE.CSS
+===============================================
+
+@media (min-width: 768px) {
+  .services {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .services .service {
+    width: 30%;
+  }
+}
+
+/* Portfolio Masonry */
+.portfolio {
+  column-count: 3; /* nombre de colonnes sur mobile */
+  column-gap: 1rem;
+  padding: 2rem 5%;
+}
+
+@media (min-width: 768px) {
+  .portfolio {
+    column-count: 3; /* 3 colonnes sur tablette/desktop */
+  }
+}
+
+.portfolio-item {
+  break-inside: avoid; /* évite que les items se cassent entre colonnes */
+  margin-bottom: 1rem;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.portfolio-item img {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.portfolio-item:hover img {
+  transform: scale(1.05);
+}
+
+
+===============================================
+3. MAIN.JS
+===============================================
+
+function portfolioGallery() {
+  return {
+    photos: [
+      'assets/images/1.png',
+      // tu peux ajouter ici toutes les photos de ton portfolio
+    ],
+    lightboxOpen: false,
+    currentIndex: 0,
+
+    open(index) {
+      this.currentIndex = index;
+      this.lightboxOpen = true;
+    },
+
+    close() {
+      this.lightboxOpen = false;
+    }
+  }
+}

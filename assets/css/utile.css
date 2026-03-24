@@ -1,0 +1,297 @@
+/* Préambule : Feuille de route du pack utile.css
+   - Reset simple pour uniformiser les styles de base
+   - Variables CSS pour les couleurs, polices et espacements
+   - Styles de base pour le corps, titres et paragraphes
+   - Styles pour l'en-tête (header) avec menu de navigation
+   - Styles pour les liens (a)
+   - Styles responsives pour mobile
+   - Styles pour les boutons
+   - Styles pour la lightbox d'images
+   - Styles pour la mise en forme des sections de prestations
+*/
+
+/* quelques styles utiles.. */
+/* 
+width: largeur de l'élément 
+height: hauteur de l'élément
+
+la valeur auto permet à l'élément de s'adapter à son contenu
+
+min/max-width: largeur minimale/maximale de l'élément
+min/max-height: hauteur minimale/maximale de l'élément
+
+border: bordure autour de l'élément
+padding: espace intérieur entre le contenu et la bordure
+
+margin: espace extérieur entre l'élément et les autres éléments
+
+background-color: couleur de fond de l'élément
+background-color: var(--color-bg): utilisation d'une variable CSS pour la couleur de fond
+color: couleur du texte
+
+display: est la façon dont un élément est affiché sur la page
+
+voici une liste des valerus que peut prendre display :
+
+- block : élément en bloc (prend toute la largeur disponible)
+
+- inline : élément en ligne (ne prend que la largeur de son contenu)
+- inline-block : élément en ligne mais avec des propriétés de bloc (largeur, hauteur, marges, paddings)
+
+
+- flex : élément flexible (permet de créer des mises en page flexibles)
+que veux dire flexible ? un conteneur flexible ajuste la taille de ses éléments enfants 
+en fonction de l'espace disponible
+
+- grid : élément en grille (permet de créer des mises en page en grille)
+
+- none : l'élément est masqué
+
+
+position: positionnement de l'élément (static, relative, absolute, fixed, sticky) sur la page
+static : position par défaut, relative : position par rapport à sa position normale, 
+absolute : position par rapport à son parent le plus proche positionné,
+fixed : position par rapport à la fenêtre du navigateur,
+sticky : position fixe jusqu'à un certain point lors du défilement
+
+top : distance entre le bord supérieur de l'élément et le bord supérieur de son conteneur
+
+z-index : ordre de superposition des éléments (plus la valeur est élevée, plus l'élément est au premier plan)
+z -index fonctionne uniquement pour les éléments positionnés (relative, absolute, fixed, sticky)
+z-index: 100; /* met l'élément au premier plan par rapport aux autres éléments avec un z-index inférieur */
+
+
+
+
+
+
+*/
+
+
+
+@font-face {
+    font-family: 'Brittany';
+    src: url('../fonts/BrittanySignature.ttf') format('truetype');
+}
+
+/* RESET SIMPLE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* VARIABLES */
+/* Définition des variables CSS pour les couleurs, polices et espacements 
+afin de faciliter la maintenance et la cohérence du design */
+:root {
+    /* le :root est l'élément racine du document, ici on définit des variables globales elle est utilisée
+    pour stocker des valeurs réutilisables dans tout le CSS */
+    --color-bg: #f9f6f2;
+    --color-black: #1a1a1a;
+    --color-grey: #dcdcdc;
+    --color-accent: #bfa06b;
+    --font-logo: 'Belleza', serif;      /* Logo */
+    --font-title: 'Belleza', serif;  /* H1/H2 si besoin */
+    --font-text: 'Belleza', serif;   /* Texte normal */
+    --spacing: 1.5rem;
+}
+
+/* BASE */
+/* utilisation des variables pour les styles de base definie au prealable dans le :root */
+body {
+    font-family: var(--font-text);
+    background-color: var(--color-bg);
+    color: var(--color-black);
+    line-height: 1.6;
+    overflow-x: hidden; /* Évite les scroll horizontaux */
+}
+
+/* TYPOGRAPHIE */
+h1, h2, h3, h4 {
+    font-family: var(--font-title);
+    font-weight: 700;
+    color: var(--color-black);
+}
+
+p {
+    font-family: var(--font-text);
+    color: var(--color-black);
+}
+
+
+
+/* HEADER */
+.site-header {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    background-color: var(--color-bg);
+    z-index: 100;
+    border-bottom: 1px solid var(--color-grey);
+}
+.header-container {
+    max-width: 1200px;   /* limite élégante sur desktop */
+    width: 90%;          /* fluide sur mobile */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+/* LIENS */
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+a:hover {
+    color: var(--color-black);
+}
+
+/* SMARTPHONE FRIENDLY */
+
+@media (max-width: 768px) {
+
+    .header-container {
+        width: 90%;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    .nav-menu ul li a {
+        font-size: 0.9rem;
+    }
+}
+
+/* BOUTON MENU */
+.logo a {
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-black);
+    text-decoration: none;
+    line-height: 1;
+    
+}
+.nav-menu ul {
+    display: flex;
+    flex-wrap: wrap;   /* ← IMPORTANT */
+    gap: 1.2rem;
+    list-style: none;
+    justify-content: flex-end;
+}
+
+
+.nav-menu ul li a {
+    font-family: var(--font-text);
+    color: var(--color-black);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.nav-menu ul li a:hover {
+    color: var(--color-accent);
+    transform: translateY(-2px);
+}
+
+.menu-btn {
+    display: inline-block;
+    background: var(--color-accent);
+    color: var(--color-bg);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.menu-btn:hover {
+    background: var(--color-black);
+    color: var(--color-accent);
+}
+
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+}
+
+.lightbox .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    color: white;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* Show lightbox */
+[x-show="lightboxOpen"] {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* MISE EN FORME SECTION */
+.presta-container {
+    width: 80%;
+    margin: 4rem auto;
+    text-align: center;
+}
+
+.presta-title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+/* Grille */
+.presta-grid {
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* smartphone friendly */
+@media (min-width: 768px) {
+    .presta-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Carte */
+.presta-card {
+    background: rgba(255,255,255,0.6);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    border: 1px solid rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}

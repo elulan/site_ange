@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Soleria</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Belleza&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+</head>
+<body>  
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Portfolio -->
+    <main x-data="portfolioGallery()" x-init="$nextTick(() => initMasonryGrid())">
+        <section class="portfolio">
+            <template x-for="(photo, index) in photos" :key="index">
+                <div class="portfolio-item" @click="open(index)">
+                    <img :src="photo" alt="Portfolio photo">
+                </div>
+            </template>
+        </section>
+
+        <!-- Lightbox -->
+        <div class="lightbox" x-show="lightboxOpen" @click.self="close()">
+            <img :src="photos[currentIndex]" alt="Photo agrandie">
+            <button class="close-btn" @click="close()">×</button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

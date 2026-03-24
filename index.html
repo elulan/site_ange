@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOLERIA RELIGION</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Belleza&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+</head>
+<body>
+    <!-- Header sera chargé ici -->
+    <div id="header"></div>
+
+    <!-- Main -->
+    <main>
+  <div class="hero-container">
+    <section class="hero" x-data="heroSlider" x-init="init()">
+      <template x-for="(img, index) in images" :key="index">
+        <img class="hero-slide" :src="img" :class="{ 'active': index === current }">
+      </template>
+    </section>
+  </div>
+</main>
+
+
+    <!-- Footer sera chargé ici -->
+    <div id="footer"></div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

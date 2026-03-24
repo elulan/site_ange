@@ -1,0 +1,165 @@
+// preambule : feuille de route pour les composants HTML réutilisables (utile)
+// quelques balises
+
+
+
+//html ,head,  sert a definir la structure de base d'une page web
+header,         sert a definir lentete de la page
+body,         contient le contenu visible de la page
+ footer,       sert a definir le pied de page de la page web
+ 
+ 
+ body  contient le contenu visible de la page
+ main,   contient le contenu principal de la page
+
+  section, 
+   regroupe des contenus thématiquement liés on l'utilise pour diviser la page en sections distinctes
+
+   article,     représente une unité de contenu indépendante
+   on l'utilise pour des articles de blog, des publications, etc.
+
+    header,    entête d'une section ou d'un article
+     footer,   pied de page d'une section ou d'un article
+
+
+ nav,    contient les liens de navigation
+
+ul,  sert a creer une liste non ordonnée
+li,   représente un élément d'une liste
+
+a,  crée un lien hypertexte
+
+p,     représente un paragraphe
+
+h1, h2,      balises de titres de différents niveaux
+div,   conteneur générique pour regrouper des éléments
+
+
+
+span,   conteneur en ligne générique pour styliser une partie de texte
+
+img,  insère une image
+        link,  lie un fichier externe (comme une feuille de style CSS)
+         meta,   fournit des métadonnées sur le document HTML
+          title,  définit le titre de la page affiché dans l'onglet du navigateur
+
+script ,  inclut ou référence des scripts JavaScript
+
+
+
+
+
+
+
+
+
+
+
+
+//                  HEADER ET FOOTER COMMUNS A TOUTES LES PAGES                   //
+
+// header avec logo a gauche et menu de navigation a droite, genéré dynamiquement dans chaque page 
+//via la fonction loadComponent avec callback dans "utile.js"
+
+<header class="site-header" x-data="{ open: false }">
+    <div class="container header-container">
+        <div class="logo">
+            <a href="index.html">SOLERIA RELIGION</a>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="bio.html">À PROPOS</a></li>
+                <li><a href="presta.html">PRESTATIONS</a></li>
+                <li><a href="portfolio.html">PORTFOLIO</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+<footer class="site-footer">
+    <p>
+        © Amuse Soleria — 
+        <a href="https://www.instagram.com/amuse_soleria" target="_blank">
+            Instagram
+        </a>
+    </p>
+
+// import de fond sympas
+// la balise : link href="https://fonts.googleapis.com/css2?family=Belleza&family=Corinthia:wght@400;700&display=swap"
+rel="stylesheet"> de Belleza 
+
+
+
+//                   LA BASE HTML COMMUNE A TOUTES LES PAGES                   //
+
+
+
+//le head contient les meta tags, le title, les liens vers les fichiers CSS et les polices Google Fonts
+// c'est un peu comme l'en-tête d'un document HTML
+// elle donne des informations sur la page web mais n'est pas visible directement sur la page elle-même
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photographe – Belleza</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    // ajout des polices Google Fonts Corinthia et Belleza avec le link tag
+    <link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&display=swap" rel="stylesheet">
+
+    // pour le framework Alpine.js
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script> 
+
+
+//html contient le body qui lui-même contient le header, le main et le footer
+// c'est toujours dans le body que l'on insère le contenu visible de la page
+
+
+
+
+// a chaque fin de body et avant la fermeture de la balise html de chaque page
+<html>
+<body>
+    <div id="header"></div>    // charge le header dynamiquement
+
+// insertion du contenu principal de chaque page ici
+
+    <div id="footer"></div>     // charge le footer dynamiquement
+    <script src="assets/js/main.js"></script>    // insertion du script main.js
+</body>
+</html>
+
+
+
+
+
+//                    Grille et cartes des prestations                    //
+<main>
+    // on utilise une section avec une classe presta-container pour contenir toute la section des prestations
+    // une classe est un sélecteur CSS qui permet de cibler et de styliser des éléments HTML spécifiques
+    // une section est un conteneur sémantique c'est a dire qu'elle donne du sens au contenu qu'elle englobe
+    // elle peut etre utilisée pour regrouper des contenus thématiquement liés
+    // on peut modifier sa taille, son espacement, son alignement, etc via le CSS
+    <section class="presta-container">
+        <h1 class="presta-title">Prestations</h1>
+
+        <!-- Grille principale -->
+        <div class="presta-grid">
+            // div sert a créer une grille pour organiser les cartes de prestations
+            // la taille de chaque carte est définie par la classe CSS "presta-card"
+
+            // on utilise article ici car chaque carte représente une unité de contenu indépendante
+            <article class="presta-card featured">
+                <h2>Shooting sur mesure</h2>
+                <p class="presta-price">Devis à établir</p>
+                <ul class="presta-list">
+                    <li>• 2h</li>
+                    <li>• 15 à 50 photographies retouchées</li>
+                </ul>
+                <a href="contact.html" class="btn-outline">Book now</a>
+                // particularité ici le bouton "Book now" redirige vers la page contact.html
+            </article>
