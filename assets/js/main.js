@@ -29,16 +29,16 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener('alpine:init', () => {
     Alpine.data('heroSlider', () => ({
         images: [
-            'assets/images_index/N°1.png',
-            'assets/images_index/N°2.jpg',
-            'assets/images_index/N°3.jpeg',
-            'assets/images_index/N°4.jpeg',
+            'assets/images_index/N1.png',
+            'assets/images_index/N2.jpg',
+            'assets/images_index/N3.jpeg',
+            'assets/images_index/N4.jpeg',
         ],
         current: 0,
         init() {
             setInterval(() => {
                 this.current = (this.current + 1) % this.images.length;
-            }, 5000);
+            }, 3000);
         }
     }));
 });

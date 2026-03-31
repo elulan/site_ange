@@ -211,16 +211,17 @@ a:hover {
 
 .hero-slide {
     position: absolute;
-    top: 90%;               /* centre verticalement */
-    left: 50%;              /* centre horizontalement */
-    transform: translate(-50%, -50%); /* ajuste parfaitement le centre */
-    width: 100%;             /* force la largeur à 80% */
-    height: auto;           /* garde les proportions */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 
+    object-fit: contain; /* important pour éviter le crop */
+    
     opacity: 0;
     transition: opacity 1s ease-in-out;
-    z-index: 0;
 }
+
 
 
 
