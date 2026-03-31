@@ -45,7 +45,7 @@ document.addEventListener('alpine:init', () => {
 
             this.interval = setInterval(() => {
                 this.current = (this.current + 1) % this.images.length;
-            }, 7000);
+            }, 3000);
         }
     }));
 });
