@@ -30,10 +30,9 @@ document.addEventListener('alpine:init', () => {
     Alpine.data('heroSlider', () => ({
         images: [
             'assets/images_index/N°1.png',
-            'assets/images_index/N°2.png',
-            'assets/images_index/N°3.png',
-            'assets/images_index/N°4.jpg',
-            'assets/images_index/N°5.png',
+            'assets/images_index/N°2.jpg',
+            'assets/images_index/N°3.jpeg',
+            'assets/images_index/N°4.jpeg',
         ],
         current: 0,
         init() {
