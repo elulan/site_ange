@@ -95,7 +95,6 @@ function portfolioGallery() {
             'assets/images/37.png',
             'assets/images/38.jpeg',
             'assets/images/39.jpeg',
-            'assets/images/40.png',
             'assets/images/41.jpg',
             'assets/images/42.jpg',
             'assets/images/43.jpeg',
