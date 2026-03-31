@@ -15,10 +15,11 @@
     <!-- Main -->
     <main>
   <div class="hero-container">
-    <section class="hero" x-data="heroSlider" x-init="init()">
-      <template x-for="(img, index) in images" :key="index">
-        <img class="hero-slide" :src="img" :class="{ 'active': index === current }">
-      </template>
+    <section class="hero" x-data="heroSlider" x-init="init()" x-cloak>
+      <img 
+        :src="images[current].src" 
+        :style="'object-position: ' + images[current].position + '; opacity:1'"
+        class="hero-slide">
     </section>
   </div>
 </main>

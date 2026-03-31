@@ -202,44 +202,37 @@ a:hover {
 
 .hero {
     position: relative;
-    height: 85vh;
-    display: flex;
-    justify-content: flex-start; /* texte en bas à gauche */
-    align-items: flex-end;
+    width: 100%;
+    height: 500px; /* cadre fixe */
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+[x-cloak] {
+    display: none;
 }
 
 .hero-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-
-    object-fit: contain; /* important pour éviter le crop */
-    
+    object-fit: cover;        /* 🔥 remplit le cadre */
     opacity: 0;
-    transition: opacity 1s ease-in-out;
 }
 
 
-
-
 .hero-image {
-    width: 80%;
+    width: 90%;
     height: 100%;
-
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-
     border-radius: 16px;        /* arrondi léger, élégant */
 }
 
 
-.hero-slide.active {
-    opacity: 1;
-}
 
 @media(max-width: 428px){
     .hero{

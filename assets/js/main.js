@@ -29,16 +29,23 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener('alpine:init', () => {
     Alpine.data('heroSlider', () => ({
         images: [
-            'assets/images_index/N1.png',
-            'assets/images_index/N2.jpg',
-            'assets/images_index/N3.jpeg',
-            'assets/images_index/N4.jpeg',
+        { src: 'assets/images_index/N1.png', position: 'top' }, // portrait
+        { src: 'assets/images_index/N2.jpg', position: 'top' },    // paysage
+        { src: 'assets/images_index/N3.jpeg', position: '30% 15%' },
+        { src: 'assets/images_index/N4.jpeg', position: 'center' },
         ],
         current: 0,
         init() {
-            setInterval(() => {
+            if (this.interval) return;
+
+            if (!this.images || this.images.length === 0) {
+                console.error("No images found");
+                return;
+            }
+
+            this.interval = setInterval(() => {
                 this.current = (this.current + 1) % this.images.length;
-            }, 3000);
+            }, 7000);
         }
     }));
 });
